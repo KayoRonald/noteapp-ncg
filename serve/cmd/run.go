@@ -16,17 +16,16 @@ func Run(app *fiber.App) error {
 	app.Use(logger.New())
 	app.Use(middleware.CorsMiddleware())
 	app.Use(middleware.Limiter())
-	app.Use(handlers.NotFound)
-
 	app.Get("/", func(c *fiber.Ctx) error {
 		return c.Status(fiber.StatusOK).JSON(fiber.Map{
 			"message": "Hello World",
 		})
 	})
+	app.Use(handlers.NotFound)
 
 	if port == "" {
-		fmt.Println("Environment specified PORT, '3000' otherwise")
-		port = "3000"
+		fmt.Println("Environment specified PORT, '8080' otherwise")
+		port = "8080"
 	}
 
 	fmt.Printf("Exposed PORT, '%v' otherwise\n", port)
