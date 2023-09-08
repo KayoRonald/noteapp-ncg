@@ -7,7 +7,7 @@ import (
 	"gorm.io/gorm"
 )
 
-type User struct {
+type Note struct {
 	gorm.Model
 	ID        			string `gorm:"type:uuid;primaryKey" json:"id"`
 	Title      			string    `gorm:"not null" json:"title"`
@@ -16,7 +16,7 @@ type User struct {
 	UpdatedAt 			*time.Time
 }
 
-func (u *User) BeforeSave(tx *gorm.DB) (err error){
+func (u *Note) BeforeSave(tx *gorm.DB) (err error){
 	u.ID = uuid.New().String()
 	return
 }

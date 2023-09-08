@@ -7,7 +7,6 @@ import (
 	"github.com/KayoRonald/noteapp/serve/models"
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
-	// "gorm.io/gorm/logger"
 )
 
 type DbInstance struct {
@@ -22,7 +21,7 @@ func ConnectDB() {
 	db, err := gorm.Open(sqlite.Open("api.db"), &gorm.Config{})
 
 	if err != nil {
-		fmt.Printf("Failed to connect to the database! \n", err)
+		fmt.Println("Failed to connect to the database! \n", err)
 		os.Exit(2)
 	}
 	fmt.Println("Connected Successfully to Database")

@@ -6,6 +6,7 @@ import (
 
 	"github.com/KayoRonald/noteapp/serve/handlers"
 	"github.com/KayoRonald/noteapp/serve/middleware"
+	"github.com/KayoRonald/noteapp/serve/router"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/logger"
 )
@@ -21,6 +22,7 @@ func Run(app *fiber.App) error {
 			"message": "Hello World",
 		})
 	})
+	router.BookRoutes(app)
 	app.Use(handlers.NotFound)
 
 	if port == "" {
