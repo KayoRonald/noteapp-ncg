@@ -2,27 +2,13 @@ import { GetStaticProps } from 'next'
 import { Heading, Center } from "@chakra-ui/react";
 import getConfig from 'next/config'
 import axios from 'axios';
+import { ArrayDataProps, NoteProps } from '@/types';
+import { NoteList } from '@/components/Note/NoteList';
+import React from 'react';
 const { publicRuntimeConfig } = getConfig()
 
-export default function Home({data}: any) {
-  console.log(data)
-  return (
-    <Center>
-      <Heading>Olá, Mundo!</Heading>
-    </Center>
-  )
-}
-
-interface NoteProps {
-  id: string;
-  title: string;
-  description: string;
-}
-interface IndexPageProps {
-  data: NoteProps[];
-}
 export const getStaticProps: GetStaticProps = async (context) => {
-  const { data } = await axios.get<IndexPageProps>(`${publicRuntimeConfig.apiURL}/note`)
+  const { data } = await axios.get<ArrayDataProps>(`${publicRuntimeConfig.apiURL}/note`)
   return {
     props: {
       data:  data.data.map((note: NoteProps) => ({
@@ -32,4 +18,12 @@ export const getStaticProps: GetStaticProps = async (context) => {
       }))
     }
   }
+}
+
+export default function Home({data}: ArrayDataProps) {
+  return (
+    <>
+      <NoteList data={data} />
+    </>
+  )
 }
