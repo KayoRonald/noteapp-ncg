@@ -29,3 +29,19 @@ func PostNote(c *fiber.Ctx) error {
 		"status":  "sucess",
 	})
 }
+
+func DeleteNote(c *fiber.Ctx) error {
+	id := c.Params("id")
+	note := new(models.Note)
+	result := database.Database.Db.Where("id = ?", id).Delete(&note)
+	if result.RowsAffected == 0 {
+		return c.Status(fiber.StatusOK).JSON(fiber.Map{
+			"message": "Nenhum encontrado neste ID",
+			"status":  "err",
+		})
+	}
+	return c.Status(fiber.StatusOK).JSON(fiber.Map{
+		"message": "Livro deletado com sucesso!",
+		"status":  "sucess",
+	})
+}
