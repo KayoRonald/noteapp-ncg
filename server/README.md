@@ -13,15 +13,17 @@
 **Resposta:**
 
 ```json
-{
+data: {
+  {
   "id": "2fd2c248-a6d7-4a60-ba55-a58867e31fcb",
   "title": "Minha primeira notação",
   "description": "Descrição da notação"
-},
-{
-  "id": "62b14ec5-dd98-480c-8ba4-454f29b41a79",
-  "title": "Minha segunda notação",
-  "description": "Descrição da notação"
+  },
+  {
+    "id": "62b14ec5-dd98-480c-8ba4-454f29b41a79",
+    "title": "Minha segunda notação",
+    "description": "Descrição da notação"
+  }
 }
 ```
 
@@ -37,10 +39,12 @@
 
 **Resposta:**
 ```json
-{
-  "id": "2fd2c248-a6d7-4a60-ba55-a58867e31fcb",
-  "title": "Minha primeira notação",
-  "description": "Descrição da notação"
+data: {
+  {
+    "id": "2fd2c248-a6d7-4a60-ba55-a58867e31fcb",
+    "title": "Minha primeira notação",
+    "description": "Descrição da notação"
+  }
 }
 ```
 
@@ -60,10 +64,12 @@ body:
 
 **Resposta:**
 ```json
-{
-  "id": "2fd2c248-a6d7-4a60-ba55-a58867e31fcb",
-  "title": "Ninha atualização",
-  "description": "Descrição atualizada"
+data: {
+  {
+    "id": "2fd2c248-a6d7-4a60-ba55-a58867e31fcb",
+    "title": "Ninha atualização",
+    "description": "Descrição atualizada"
+  }
 }
 ```
 

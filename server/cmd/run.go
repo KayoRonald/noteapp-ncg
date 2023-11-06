@@ -11,15 +11,20 @@ import (
 	"github.com/gofiber/fiber/v2/middleware/logger"
 )
 
+// Run runs the application.
+//
+// It takes an instance of the fiber.App struct as a parameter and returns an error.
 func Run(app *fiber.App) error {
 	port := os.Getenv("port")
 
 	app.Use(logger.New())
 	app.Use(middleware.CorsMiddleware())
 	app.Use(middleware.Limiter())
+
 	app.Get("/", func(c *fiber.Ctx) error {
 		return c.Status(fiber.StatusOK).JSON(fiber.Map{
 			"message": "Hello World",
+			"status":  "sucess",
 		})
 	})
 	router.BookRoutes(app)

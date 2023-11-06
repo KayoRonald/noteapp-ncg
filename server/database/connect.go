@@ -17,6 +17,10 @@ var (
 	Database DbInstance
 )
 
+// ConnectDB connects to the database and initializes the Database struct.
+//
+// It does not take any parameters.
+// It does not return any values.
 func ConnectDB() {
 	db, err := gorm.Open(sqlite.Open("api.db"), &gorm.Config{})
 
@@ -25,7 +29,7 @@ func ConnectDB() {
 		os.Exit(2)
 	}
 	fmt.Println("Connected Successfully to Database")
-	
+
 	// db.Logger = logger.Default.LogMode(logger.Info)
 	fmt.Println("Running Migrations")
 	db.AutoMigrate(&models.Note{})
