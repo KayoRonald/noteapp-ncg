@@ -13,4 +13,5 @@ func BookRoutes(app *fiber.App) {
 	v1 := app.Group("note")
 	v1.Get("/", controllers.GetNote)
 	v1.Post("/", controllers.PostNote)
+	v1.Delete("/", controllers.DeleteNote)
 }
