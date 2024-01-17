@@ -1,12 +1,10 @@
 import * as React from "react";
 import { 
-  chakra, Link, Stack, Box, Button, useColorModeValue, 
-  Flex, Container, Text, HStack, Icon, Heading, Center, Fade 
+  Stack, Box, Flex, Text,Heading, Center, Fade 
 } from '@chakra-ui/react';
 import { ArrayDataProps } from "@/types";
 import { SimpleGrid } from "./grid";
-import { MdEdit, MdDelete } from 'react-icons/md'
-
+import { Action } from "./action";
 
 export const Contentlist: React.FC<ArrayDataProps> = ({
   data,
@@ -46,31 +44,7 @@ export const Contentlist: React.FC<ArrayDataProps> = ({
                         Note
                       </Text>
                     </Box>
-                    <Box
-                      _groupHover={{ display: "block" }}
-                      display="none"
-                    >
-                      <HStack spacing="2">
-                        <Icon
-                          color={"green.500"}
-                          _hover={{ color: "green.600" }}
-                          _groupHover={{ display: "block" }}
-                          as={MdEdit}
-                          w={4}
-                          h={4}
-                        // onClick={e => onClick(note.id, e)}
-                        />
-                        <Icon
-                          color={"green.500"}
-                          _hover={{ color: "#ca364a" }}
-                          _groupHover={{ display: "block" }}
-                          as={MdDelete}
-                          w={4}
-                          h={4}
-                        // onClick={e => onDelete(note.id, e)}
-                        />
-                      </HStack>
-                    </Box>
+                    <Action id={note.id} name={note.title}/>
                   </Flex>
                   <Heading
                     fontSize={"xl"}
