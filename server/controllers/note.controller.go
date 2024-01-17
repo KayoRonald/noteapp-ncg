@@ -32,9 +32,8 @@ func PostNote(c *fiber.Ctx) error {
 }
 
 func DeleteNote(c *fiber.Ctx) error {
-	id := c.Query("id")
-	// id := c.Params("id")
-	note := new(models.Note)
+	id := c.Params("id")
+	note := models.Note{}
 	result := database.Database.Db.Where("id = ?", id).Delete(&note)
 	if result.RowsAffected == 0 {
 		return c.Status(fiber.StatusNotFound).JSON(fiber.Map{
@@ -43,7 +42,7 @@ func DeleteNote(c *fiber.Ctx) error {
 		})
 	}
 	return c.Status(fiber.StatusOK).JSON(fiber.Map{
-		"message": "Livro deletado com sucesso!",
+		"message": "Nota deletad com sucesso!",
 		"status":  "sucess",
 	})
 }
