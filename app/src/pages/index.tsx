@@ -4,6 +4,7 @@ import axios from 'axios';
 import { NoteList } from '@/components/note';
 import React from 'react';
 import { NoteProps } from '@/types';
+import Head from 'next/head';
 const { publicRuntimeConfig } = getConfig()
 
 interface ArrayDataProps { 
@@ -19,15 +20,19 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
   return {
     props: {
-      notes: data
-    }
+      data
+    },
+    revalidate: 10, // In 10 seconds
   }
 }
 
 export default function Home({ data }: DataProps) {
   return (
     <>
-      <NoteList data={data.data} />
+      <Head>
+        <title>Note</title>
+      </Head>
+      <NoteList note={data} />
     </>
   )
 }

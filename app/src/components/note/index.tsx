@@ -3,19 +3,14 @@ import { Contentlist } from "./content-list";
 import { NotContent } from "./note-list"
 import { ArrayDataProps, NoteProps } from "@/types";
 
-// interface ArrayDataProps { 
-//   data: NoteProps[];
-// }
-
-// interface NoteLisProps {
-//   note: ArrayDataProps
-// }
-export const NoteList:  React.FC<ArrayDataProps> = ({ data }) => {
-  
+interface NoteLisProps {
+  note: ArrayDataProps
+}
+export const NoteList:  React.FC<NoteLisProps> = ({ note }) => {
   return (
     <>
-      {data.length ? (
-        <Contentlist data={data}/>
+      {note?.data.length ? (
+        <Contentlist data={note.data}/>
       ) : (
         <NotContent />
       )}
