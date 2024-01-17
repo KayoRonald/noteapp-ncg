@@ -1,6 +1,6 @@
-import { chakra, Link, Stack, Box, Button, useColorModeValue, Flex, Container } from '@chakra-ui/react';
+import { chakra, Link, Stack, Box, Button, useColorModeValue, Flex, Container, useDisclosure } from '@chakra-ui/react';
 
-const NotContent = () => {
+export const NotContent = () => {
   return (
     <Flex
       mt={6}
@@ -37,7 +37,5 @@ const NotContent = () => {
         </Stack>
       </Box>
     </Flex>
-  );
-};
-
-export default NotContent;
+  )
+}

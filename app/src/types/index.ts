@@ -3,6 +3,7 @@ export interface NoteProps {
   title: string;
   description: string;
 }
-export interface ArrayDataProps {
+
+export interface ArrayDataProps { 
   data: NoteProps[];
 }
