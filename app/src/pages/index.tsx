@@ -1,29 +1,33 @@
 import { GetStaticProps } from 'next'
-import { Heading, Center } from "@chakra-ui/react";
 import getConfig from 'next/config'
 import axios from 'axios';
-import { ArrayDataProps, NoteProps } from '@/types';
-import { NoteList } from '@/components/Note/NoteList';
+import { NoteList } from '@/components/note';
 import React from 'react';
+import { NoteProps } from '@/types';
 const { publicRuntimeConfig } = getConfig()
 
+interface ArrayDataProps { 
+  data: NoteProps[];
+}
+
+interface DataProps { 
+  data: ArrayDataProps
+}
+
 export const getStaticProps: GetStaticProps = async (context) => {
-  const { data } = await axios.get<ArrayDataProps>(`${publicRuntimeConfig.apiURL}/note`)
+  const { data } = await axios.get(`${publicRuntimeConfig.apiURL}/note`)
+
   return {
     props: {
-      data:  data.data.map((note: NoteProps) => ({
-        id: note.id,
-        title: note.title,
-        description: note.description
-      }))
+      notes: data
     }
   }
 }
 
-export default function Home({data}: ArrayDataProps) {
+export default function Home({ data }: DataProps) {
   return (
     <>
-      <NoteList data={data} />
+      <NoteList data={data.data} />
     </>
   )
 }
