@@ -27,6 +27,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 }
 
 export default function Home({ data }: DataProps) {
+  console.log(data)
   return (
     <>
     <Head>

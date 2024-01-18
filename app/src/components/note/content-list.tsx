@@ -13,8 +13,8 @@ export const Contentlist: React.FC<ArrayDataProps> = ({
     <Box minH={"70vh"}>
       <SimpleGrid mt={16}>
         {data.map(note => (
-          <Fade in={true} key={note.id}>
-            <Center py={2} px={2}>
+            <Fade in={true}>
+              <Center py={2} px={2} key={note.id}>
               <Box
                 maxH={"400px"}
                 w="100%"
@@ -65,7 +65,7 @@ export const Contentlist: React.FC<ArrayDataProps> = ({
                 </Stack>
               </Box>
             </Center>
-          </Fade>
+            </Fade>
         ))}
       </SimpleGrid>
     </Box>

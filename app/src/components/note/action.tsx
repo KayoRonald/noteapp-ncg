@@ -29,7 +29,8 @@ export const Action = (props: ActionButton) => {
       status: 'loading'
     })
     try {
-      await axios.delete(`${publicRuntimeConfig.apiURL}/note/${id}`)
+      const res =await axios.delete(`${publicRuntimeConfig.apiURL}/note/${id}`)
+      console.log(res)
       toast.update(toastID, {
         title: `Excluído com sucesso`,
         status: 'success'

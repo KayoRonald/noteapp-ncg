@@ -11,7 +11,7 @@ import { ArrayDataProps, NoteProps } from "@/types";
 //   note: ArrayDataProps
 // }
 export const NoteList:  React.FC<ArrayDataProps> = ({ data }) => {
-  
+  console.log(data)
   return (
     <>
       {data.length ? (
